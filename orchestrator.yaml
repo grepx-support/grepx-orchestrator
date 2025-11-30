@@ -1,0 +1,27 @@
+projects:
+  price_app:
+    url: https://grepx-admin@bitbucket.org/grepx/stock-price-app.git
+    branch: main
+    dependencies:
+      - dagster_framework
+      - celery_framework
+      - py_mongo_libs
+
+dependencies:
+  dagster_framework:
+    url: https://grepx-admin@bitbucket.org/grepx/dagster_framework.git
+    branch: master
+    path: dagster_framework
+    requirements: true
+
+  celery_framework:
+    url: https://grepx-admin@bitbucket.org/grepx/celery_framework.git
+    branch: master
+    path: celery_framework
+    requirements: true
+
+  py_mongo_libs:
+    url: https://grepx-admin@bitbucket.org/grepx/py-mongo-libs.git
+    branch: main
+    path: py-mongo-libs
+    requirements: true
