@@ -1,7 +1,7 @@
 projects:
   price_app:
     url: https://grepx-admin@bitbucket.org/grepx/stock-price-app.git
-    branch: main
+    branch: new
     dependencies:
       - dagster_framework
       - celery_framework
