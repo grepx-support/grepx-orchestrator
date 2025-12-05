@@ -1,5 +1,9 @@
+# orchestrator/run.sh
+
 #!/bin/bash
 set -e
+
+cd "$(dirname "$0")"
 
 if [ ! -d "venv" ]; then
     echo "Error: venv not found. Run ./setup.sh first"
