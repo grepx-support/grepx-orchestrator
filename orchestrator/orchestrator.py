@@ -29,13 +29,9 @@ def setup_logging():
     return logging.getLogger(__name__)
 
 
-def run_cmd(cmd, cwd=None, quiet=False):
-    if quiet:
-        result = subprocess.run(cmd, shell=True, cwd=cwd, capture_output=True, text=True)
-        return result.returncode == 0
-    else:
-        result = subprocess.run(cmd, shell=True, cwd=cwd)
-        return result.returncode == 0
+def run_cmd(cmd, cwd=None):
+    result = subprocess.run(cmd, shell=True, cwd=cwd)
+    return result.returncode == 0
 
 
 def clone_or_update(name, url, branch, target_dir, logger):
@@ -53,44 +49,32 @@ def clone_or_update(name, url, branch, target_dir, logger):
         return success
 
 
-def install_dependency(dep_name, dep_config, logger):
+def fetch_dependency(dep_name, dep_config, logger):
     url = dep_config['url']
     branch = dep_config.get('branch', 'main')
     path = dep_config['path']
-    has_req = dep_config.get('requirements', False)
 
     dep_path = LIBS_DIR / path
     dep_path.parent.mkdir(parents=True, exist_ok=True)
 
-    logger.info(f"Processing dependency: {dep_name}")
-
-    if not clone_or_update(dep_name, url, branch, dep_path, logger):
-        return False
-
-    if has_req and (dep_path / 'requirements.txt').exists():
-        logger.info(f"Installing requirements for {dep_name}...")
-        run_cmd(f"pip install -r {dep_path}/requirements.txt", quiet=True)
-
-    logger.info(f"Installing {dep_name} in editable mode...")
-    run_cmd(f"pip install -e {dep_path}", quiet=True)
-    logger.info(f"{dep_name} installed")
-    return True
+    logger.info(f"Fetching dependency: {dep_name}")
+    return clone_or_update(dep_name, url, branch, dep_path, logger)
 
 
-def install_all_libs(config, logger):
+def fetch_all_libs(config, logger):
     logger.info("=" * 50)
-    logger.info("Installing all libraries")
+    logger.info("Fetching all libraries")
     logger.info("=" * 50)
     
     all_deps = config.get('dependencies', {})
     if not all_deps:
-        logger.info("No dependencies to install")
+        logger.info("No dependencies to fetch")
         return True
     
     for dep_name, dep_config in all_deps.items():
-        install_dependency(dep_name, dep_config, logger)
+        fetch_dependency(dep_name, dep_config, logger)
     
-    logger.info("All libraries installed")
+    logger.info("All libraries fetched")
     return True
 
 
@@ -115,25 +99,16 @@ def deploy_project(project_name, config, logger):
         return False
 
     if deps:
-        logger.info(f"Step 2: Installing {len(deps)} dependencies")
+        logger.info(f"Step 2: Fetching {len(deps)} dependencies")
         all_deps = config.get('dependencies', {})
         for i, dep in enumerate(deps, 1):
             if dep in all_deps:
                 logger.info(f"[{i}/{len(deps)}]")
-                install_dependency(dep, all_deps[dep], logger)
-
-    pkg_file = project_path / 'repo_specific_packages.txt'
-    if pkg_file.exists():
-        logger.info("Step 3: Running project-specific commands")
-        with open(pkg_file) as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    logger.info(f"> {line}")
-                    run_cmd(line, cwd=project_path)
+                fetch_dependency(dep, all_deps[dep], logger)
 
     logger.info("=" * 50)
     logger.info(f"Deployment completed: {project_name}")
+    logger.info(f"Run 'cd {project_name} && ./setup.sh' to install dependencies")
     logger.info("=" * 50)
     return True
 
@@ -151,7 +126,7 @@ def main():
     parser.add_argument('-p', '--project', help='Project name to deploy')
     parser.add_argument('-l', '--list', action='store_true', help='List all projects')
     parser.add_argument('-a', '--all', action='store_true', help='Deploy all projects')
-    parser.add_argument('--install-libs', action='store_true', help='Install all libraries')
+    parser.add_argument('--fetch-libs', action='store_true', help='Fetch all libraries')
 
     args = parser.parse_args()
 
@@ -166,8 +141,8 @@ def main():
 
     if args.list:
         list_projects(config)
-    elif args.install_libs:
-        install_all_libs(config, logger)
+    elif args.fetch_libs:
+        fetch_all_libs(config, logger)
     elif args.all:
         for project_name in config.get('projects', {}).keys():
             deploy_project(project_name, config, logger)

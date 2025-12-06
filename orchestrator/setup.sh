@@ -5,21 +5,20 @@ set -e
 
 cd "$(dirname "$0")"
 
+# Source common paths
+source ./common.sh
+
 if [ ! -d "venv" ]; then
     echo "Creating virtual environment..."
-    python3 -m venv venv
+    PYTHON=$(find_python)
+    $PYTHON -m venv venv
 fi
 
-echo "Activating virtual environment and installing dependencies..."
+echo "Upgrading pip..."
+$VENV_PYTHON -m pip install --upgrade pip
 
-if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]] || uname -s | grep -qi "MINGW\|MSYS\|CYGWIN"; then
-    venv/Scripts/python.exe -m pip install --upgrade pip
-    venv/Scripts/python.exe -m pip install -r requirements.txt
-else
-    source venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-fi
+echo "Installing requirements..."
+$VENV_PIP install -r requirements.txt
 
 echo ""
 echo "Setup complete!"

@@ -1,18 +1,14 @@
-# orchestrator/run.sh
-
 #!/bin/bash
 set -e
 
 cd "$(dirname "$0")"
+
+# Source common paths
+source ./common.sh
 
 if [ ! -d "venv" ]; then
     echo "Error: venv not found. Run ./setup.sh first"
     exit 1
 fi
 
-if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]] || uname -s | grep -qi "MINGW\|MSYS\|CYGWIN"; then
-    venv/Scripts/python.exe orchestrator.py "$@"
-else
-    source venv/bin/activate
-    python orchestrator.py "$@"
-fi
+$VENV_PYTHON orchestrator.py "$@"
