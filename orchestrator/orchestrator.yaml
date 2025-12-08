@@ -7,6 +7,7 @@ projects:
       - grepx-celery-framework-libs
       - grepx-mongo-libs
       - grepx-py-pg-libs
+      - py-orm-libs
 dependencies:
   grepx-dagster-framework-libs:
     url: https://github.com/grepx-support/grepx-dagster-framework-libs.git
@@ -29,4 +30,9 @@ dependencies:
     url: https://grepx-admin@bitbucket.org/grepx/py-pg-libs.git
     branch: master
     path: pg_libs
+    requirements: true
+  py-orm-libs:
+    url: https://bitbucket.org/grepx/py-orm-libs.git
+    branch: main
+    path: py-orm-libs
     requirements: true
