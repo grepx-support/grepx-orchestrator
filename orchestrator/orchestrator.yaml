@@ -32,7 +32,7 @@ dependencies:
     path: pg_libs
     requirements: true
   py-orm-libs:
-    url: https://bitbucket.org/grepx/py-orm-libs.git
+    url: https://github.com/grepx-support/grepx-orm-libs.git
     branch: main
     path: py-orm-libs
     requirements: true
