@@ -1,0 +1,27 @@
+[2025-12-21 13:05:56,568] [INFO] ==================================================
+[2025-12-21 13:05:56,568] [INFO] Starting deployment: price_app
+[2025-12-21 13:05:56,569] [INFO] ==================================================
+[2025-12-21 13:05:56,569] [INFO] Step 1: Cloning/updating project repository
+[2025-12-21 13:05:56,569] [INFO] Cloning price_app from https://github.com/grepx-support/grepx-stock-price-app.git...
+[2025-12-21 13:05:58,108] [INFO] price_app cloned
+[2025-12-21 13:05:58,109] [INFO] Step 2: Fetching 5 dependencies
+[2025-12-21 13:05:58,109] [INFO] [1/5]
+[2025-12-21 13:05:58,110] [INFO] Fetching dependency: grepx-dagster-framework-libs
+[2025-12-21 13:05:58,110] [INFO] Cloning grepx-dagster-framework-libs from https://github.com/grepx-support/grepx-dagster-framework-libs.git...
+[2025-12-21 13:05:59,506] [INFO] grepx-dagster-framework-libs cloned
+[2025-12-21 13:05:59,506] [INFO] [2/5]
+[2025-12-21 13:05:59,507] [INFO] Fetching dependency: grepx-celery-framework-libs
+[2025-12-21 13:05:59,507] [INFO] Cloning grepx-celery-framework-libs from https://github.com/grepx-support/grepx-celery-framework-libs.git...
+[2025-12-21 13:06:00,596] [INFO] grepx-celery-framework-libs cloned
+[2025-12-21 13:06:00,597] [INFO] [3/5]
+[2025-12-21 13:06:00,597] [INFO] Fetching dependency: grepx-mongo-libs
+[2025-12-21 13:06:00,598] [INFO] Cloning grepx-mongo-libs from https://github.com/grepx-support/grepx-mongo-libs.git...
+[2025-12-21 13:06:01,744] [INFO] grepx-mongo-libs cloned
+[2025-12-21 13:06:01,744] [INFO] [5/5]
+[2025-12-21 13:06:01,745] [INFO] Fetching dependency: grepx-orm-libs
+[2025-12-21 13:06:01,745] [INFO] Cloning grepx-orm-libs from https://github.com/grepx-support/grepx-orm-libs.git...
+[2025-12-21 13:06:02,897] [INFO] grepx-orm-libs cloned
+[2025-12-21 13:06:02,897] [INFO] ==================================================
+[2025-12-21 13:06:02,897] [INFO] Deployment completed: price_app
+[2025-12-21 13:06:02,897] [INFO] Run 'cd price_app && ./setup.sh' to install dependencies
+[2025-12-21 13:06:02,898] [INFO] ==================================================

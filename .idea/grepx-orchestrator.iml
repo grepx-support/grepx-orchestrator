@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/libs/celery_framework/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/dagster_framework/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/mongo_connection/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/grepx-orm-libs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/price_app/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/price_app/src/main" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/price_app/venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at C:\Users\me\development\grepx-orchestrator\price_app\venv" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
+  </component>
+</module>

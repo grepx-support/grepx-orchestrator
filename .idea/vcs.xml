@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/celery_framework" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/dagster_framework" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/grepx-orm-libs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/mongo_connection" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/price_app" vcs="Git" />
+  </component>
+</project>
