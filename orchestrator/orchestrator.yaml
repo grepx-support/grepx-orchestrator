@@ -8,7 +8,13 @@ projects:
       - grepx-mongo-libs
       - grepx-py-pg-libs
       - grepx-orm-libs
+      - grepx-connection-registry
 dependencies:
+  grepx-connection-registry:
+    url: https://github.com/grepx-support/grepx-connection-registry.git
+    branch: main
+    path: connection_registry
+    requirements: true
   grepx-dagster-framework-libs:
     url: https://github.com/grepx-support/grepx-dagster-framework-libs.git
     branch: main
