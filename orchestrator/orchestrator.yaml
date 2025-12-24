@@ -9,6 +9,7 @@ projects:
       - grepx-py-pg-libs
       - grepx-orm-libs
       - grepx-connection-registry
+      - grepx-prefect-framework-libs
 dependencies:
   grepx-connection-registry:
     url: https://github.com/grepx-support/grepx-connection-registry.git
