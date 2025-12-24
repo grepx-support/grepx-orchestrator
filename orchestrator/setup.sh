@@ -10,7 +10,7 @@ source ./common.sh
 
 if [ ! -d "venv" ]; then
     echo "Creating virtual environment..."
-    PYTHON="/c/Users/ASUS/AppData/Local/Programs/Python/Python312/python"
+    PYTHON=$(find_python)
     $PYTHON -m venv venv
 fi
 
