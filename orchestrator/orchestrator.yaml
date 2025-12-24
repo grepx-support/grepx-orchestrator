@@ -21,6 +21,12 @@ dependencies:
     path: celery_framework
     requirements: true
 
+  grepx-prefect-framework-libs:
+    url: https://github.com/grepx-support/grepx-prefect-framework-libs.git
+    branch: main
+    path: prefect_framework
+    requirements: true    
+
   grepx-mongo-libs:
     url: https://github.com/grepx-support/grepx-mongo-libs.git
     branch: main
@@ -36,3 +42,4 @@ dependencies:
     branch: main
     path: grepx-orm-libs
     requirements: true
+
